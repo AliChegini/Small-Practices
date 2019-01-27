@@ -8,13 +8,25 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
 
+    let parser = JSONParser()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        print("Project is loaded ...")
+        parser.parsePerson { person, error in
+            if let error = error {
+                print(error)
+            }
+            
+            if let person = person {
+                print(person)
+            }
+        }
     }
 
 
