@@ -45,6 +45,9 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         return CGSize(width: view.frame.width, height: 200)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
     
 
 }
@@ -64,19 +67,28 @@ class PhotoCell: UICollectionViewCell {
 
     func setupViews() {
         addSubview(imageView)
-        imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-16-[v0]-16-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0": imageView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-16-[v0]-16-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0": imageView]))
+        
+        // TODO: Add constraint for separator line
+        
+        
     }
     
     
     let imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = UIColor.green
         return imageView
     }()
     
-    
-    
 
+    let separator: UIView = {
+       let line = UIView()
+       return line
+    }()
     
     
     
