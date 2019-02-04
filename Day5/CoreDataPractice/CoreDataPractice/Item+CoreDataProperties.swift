@@ -2,7 +2,7 @@
 //  Item+CoreDataProperties.swift
 //  CoreDataPractice
 //
-//  Created by Ehsan on 02/02/2019.
+//  Created by Ehsan on 04/02/2019.
 //  Copyright © 2019 Ali C. All rights reserved.
 //
 //
@@ -17,6 +17,6 @@ extension Item {
         return NSFetchRequest<Item>(entityName: "Item")
     }
 
-    @NSManaged public var name: String?
+    @NSManaged public var name: String
 
 }

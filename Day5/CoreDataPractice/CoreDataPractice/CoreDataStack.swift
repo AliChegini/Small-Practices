@@ -11,7 +11,7 @@ import CoreData
 
 class CoreDataStack {
     
-    lazy var persistentContainer: NSPersistentContainer = {
+    private lazy var persistentContainer: NSPersistentContainer = {
        let container = NSPersistentContainer(name: "CoreDataPractice")
         container.loadPersistentStores { storeDescription, error in
             if let error = error {
@@ -22,8 +22,9 @@ class CoreDataStack {
         
     }()
     
+    
     lazy var managedObjectContext: NSManagedObjectContext = {
-       let container = persistentContainer
+       let container = self.persistentContainer
         return container.viewContext
     }()
     

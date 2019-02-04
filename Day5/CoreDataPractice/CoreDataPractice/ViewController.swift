@@ -23,9 +23,16 @@ class ViewController: UIViewController {
     
     
     @IBAction func save(_ sender: UIButton) {
-        if let text = textField.text {
-            
+        guard let text = textField.text, !text.isEmpty else {
+            return
         }
+        
+        if let item = NSEntityDescription.insertNewObject(forEntityName: "Item", into: managedObjectContext) as? Item {
+            item.name = text
+        }
+        
+        managedObjectContext.saveChanges()
+        print("changes saved")
     }
     
     
