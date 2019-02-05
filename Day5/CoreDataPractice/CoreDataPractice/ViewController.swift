@@ -18,6 +18,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let items = try managedObjectContext.fetch(request)
+            print(items)
+        } catch {
+            print(error)
+        }
+        
+        
     }
     
     

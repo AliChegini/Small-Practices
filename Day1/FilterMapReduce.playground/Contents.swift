@@ -40,6 +40,38 @@ let total = numbers.reduce(0) { x, y in
 
 
 
+// ---------------------------------------------------------------------------
+// - Log duplicated letters from a given string (case-insensitive).
+// ---------------------------------------------------------------------------
+
+let str = "TthatsWhatSsheSaidd"
+
+
+let lowerCased = str.lowercased()
+
+// docs:  https://developer.apple.com/documentation/swift/zip2sequence/3129365-reduce
+
+var letterCount = lowerCased.reduce(into: [:]) { (countsDictionary, letter) in
+    countsDictionary[letter, default: 0] += 1
+}
+
+for item in letterCount {
+    if item.value < 2 {
+        letterCount.removeValue(forKey: item.key)
+    }
+}
+print(letterCount)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
