@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+// Docs : https://docs.swift.org/swift-book/LanguageGuide/AutomaticReferenceCounting.html
+
 class ViewController: UIViewController {
 
     var ali: Person?
