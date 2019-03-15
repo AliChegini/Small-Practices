@@ -15,11 +15,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         print("we are here ")
         
         navigationItem.title = "Home"
-        
         collectionView.backgroundColor = .white
-        
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-
+        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: "cell")
     }
 
     
@@ -33,17 +30,17 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        
-        cell.backgroundColor = .red
-        
         return cell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 150.0)
+        return CGSize(width: view.frame.width, height: 200.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
 
