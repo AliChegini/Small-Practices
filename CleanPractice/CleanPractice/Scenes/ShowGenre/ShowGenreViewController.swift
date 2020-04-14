@@ -20,24 +20,34 @@ protocol ShowGenreDisplayable: class {
 
 class ShowGenreViewController: UIViewController, ShowGenreDisplayable {
 //    lazy var interactor: ShowGenreBusinessLogic
-//    lazy var router: ShowGenreRoutable
+    lazy var router = ShowGenreRouter(viewController: self)
 //    var viewModel: ShowGenreModels.ViewModel?
+    
+    let uiElements = ShowGenreUIs()
     
     // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //doSomething()
+        view.backgroundColor = .orange
+        uiElements.setupViews(in: view)
+        
+        populateLabels()
+        
     }
     
-    // MARK: Do something
     
-//    func doSomething() {
-//        let request = ShowGenre.Something.Request()
-//        interactor?.doSomething(request: request)
-//    }
-//
-//    func displaySomething(viewModel: ShowGenreModels.ViewModel) {
-//        //nameTextField.text = viewModel.name
-//    }
+    func populateLabels() {
+        if let genre = router.genre {
+            uiElements.nameLabel.text = genre.name
+            uiElements.idLabel.text = "\(genre.id)"
+        }
+    }
+    
+    
+    @objc func dismissAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }

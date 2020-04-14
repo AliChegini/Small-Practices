@@ -22,6 +22,8 @@ class ShowGenreRouter: ShowGenreRoutable {
     
     weak var viewController: UIViewController?
     
+    var genre: Genre?
+    
     init(viewController: UIViewController) {
         self.viewController = viewController
     }

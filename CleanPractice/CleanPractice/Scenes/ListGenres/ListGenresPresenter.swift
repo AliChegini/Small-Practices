@@ -14,24 +14,21 @@
 import UIKit
 
 protocol ListGenresPresentable {
-//    func presentSomething(response: ListGenresModels.Response)
+    func presentFetchedGenres(for response: ListGenresModels.Response)
 }
 
 class ListGenresPresenter: ListGenresPresentable {
+    
     weak var viewController: ListGenresDisplayable?
   
     init(viewController: ListGenresDisplayable) {
         self.viewController = viewController
     }
     
-  // MARK: Do something
-  
-//    func presentSomething(response: ListGenresModels.Response) {
-//        let viewModel = ListGenresModels.ViewModel()
-//
-//        viewController?.displaySomething(viewModel: viewModel)
-//    }
     
-  // func to display error can be added here
-
+    func presentFetchedGenres(for response: ListGenresModels.Response) {
+        let viewModel = ListGenresModels.ViewModel(genres: response.genres)
+        viewController?.displayGenres(with: viewModel)
+    }
+    
 }

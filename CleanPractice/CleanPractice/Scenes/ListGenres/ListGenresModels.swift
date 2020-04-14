@@ -20,10 +20,10 @@ enum ListGenresModels {
     }
     
     struct Response {
-        
+        let genres: AllGenres
     }
     
     struct ViewModel {
-        
+        let genres: AllGenres
     }
 }

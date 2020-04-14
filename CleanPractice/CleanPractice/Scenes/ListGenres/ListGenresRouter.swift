@@ -27,15 +27,11 @@ class ListGenresRouter: ListGenresRoutable {
     }
     
     
-    // All the routing and data passing logic will be here
-    func doSomething() {
-        // routing to next viewContoller
-        // let vc = destinationVC
+    func showGenre(genre: Genre) {
+        let vc = ShowGenreViewController()
+        vc.router.genre = genre
         
-        // passing data to other contoller
-        //vc.router.dataStore = input
-        
-        //viewContoller.present(vc)
+        viewController?.present(vc, animated: true, completion: nil)
     }
     
 }

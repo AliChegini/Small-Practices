@@ -14,18 +14,17 @@
 import UIKit
 
 protocol ListGenresDisplayable: class {
-//    func displaySomething(viewModel: ListGenresModels.ViewModel)
-    // func to display error can be added here
+    func displayGenres(with viewModel: ListGenresModels.ViewModel)
 }
 
 class ListGenresViewController: UITableViewController, ListGenresDisplayable {
+    
     lazy var interactor = ListGenresInteractor(presenter: ListGenresPresenter(viewController: self))
     lazy var router = ListGenresRouter(viewController: self)
+    
     var viewModel: ListGenresModels.ViewModel?
     
     let uiElements = ListGenresUIs()
-    
-    let parser = JSONParser()
     
     // MARK: View lifecycle
     
@@ -36,25 +35,17 @@ class ListGenresViewController: UITableViewController, ListGenresDisplayable {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
         navigationItem.title = "Genres"
         
-        parser.parseGenres { (result) in
-            print(result)
-        }
-        
-        
-        
-        //doSomething()
+        interactor.fetchGenres(with: ListGenresModels.Request())
     }
     
-    // MARK: Do something
     
-//    func doSomething() {
-//        let request = ListGenres.Something.Request()
-//        interactor?.doSomething(request: request)
-//    }
-//
-//    func displaySomething(viewModel: ListGenresModels.ViewModel) {
-//        //nameTextField.text = viewModel.name
-//    }
+    func displayGenres(with viewModel: ListGenresModels.ViewModel) {
+        self.viewModel = viewModel
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
 }
 
 
@@ -65,15 +56,24 @@ extension ListGenresViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel?.genres.genres.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")!
-        cell.textLabel?.text = "Jimbo"
+        cell.textLabel?.text = viewModel?.genres.genres[indexPath.row].name
         
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let genre = viewModel?.genres.genres[indexPath.row] else {
+            return
+        }
+        print("did select genre", genre)
+        
+        router.showGenre(genre: genre)
+    }
     
 }

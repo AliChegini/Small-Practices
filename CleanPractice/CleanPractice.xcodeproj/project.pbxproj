@@ -24,6 +24,7 @@
 		7C29AA962442FC6C0012690C /* ListGenresUIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C29AA952442FC6C0012690C /* ListGenresUIs.swift */; };
 		7C7F924424433F1700EBF8DD /* JSONDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7F924324433F1700EBF8DD /* JSONDownloader.swift */; };
 		7C7F92462443492A00EBF8DD /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C7F92452443492A00EBF8DD /* JSONParser.swift */; };
+		7CA3C95F2445A9BD0081B370 /* ShowGenreUIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA3C95E2445A9BD0081B370 /* ShowGenreUIs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		7C29AA952442FC6C0012690C /* ListGenresUIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListGenresUIs.swift; sourceTree = "<group>"; };
 		7C7F924324433F1700EBF8DD /* JSONDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDownloader.swift; sourceTree = "<group>"; };
 		7C7F92452443492A00EBF8DD /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		7CA3C95E2445A9BD0081B370 /* ShowGenreUIs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGenreUIs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		7C29AA7D2442F8B20012690C /* ShowGenre */ = {
 			isa = PBXGroup;
 			children = (
+				7CA3C95E2445A9BD0081B370 /* ShowGenreUIs.swift */,
 				7C29AA8C2442F9340012690C /* ShowGenreViewController.swift */,
 				7C29AA8D2442F9340012690C /* ShowGenreInteractor.swift */,
 				7C29AA892442F9340012690C /* ShowGenrePresenter.swift */,
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA3C95F2445A9BD0081B370 /* ShowGenreUIs.swift in Sources */,
 				7C7F924424433F1700EBF8DD /* JSONDownloader.swift in Sources */,
 				7C29AA882442F9050012690C /* ListGenresInteractor.swift in Sources */,
 				7C29AA912442F9340012690C /* ShowGenreViewController.swift in Sources */,

@@ -14,7 +14,7 @@
 import UIKit
 
 protocol ListGenresBusinessLogic {
-//    func doSomething(request: ListGenres.Something.Request)
+    func fetchGenres(with request: ListGenresModels.Request)
 }
 
 protocol ListGenresDataStore {
@@ -22,22 +22,25 @@ protocol ListGenresDataStore {
 }
 
 class ListGenresInteractor: ListGenresBusinessLogic, ListGenresDataStore {
-  var presenter: ListGenresPresentable?
-  //var worker: ListGenresWorker?
-  //var name: String = ""
-  
+    
+    var presenter: ListGenresPresentable?
+    var worker = JSONParser()
+    
     init(presenter: ListGenresPresentable) {
         self.presenter = presenter
     }
     
     
-  // MARK: Do something
-  
-//    func doSomething(request: ListGenresModels.Request) {
-//        worker = ListGenresWorker()
-//        worker?.doSomeWork()
-//
-//        let response = ListGenresModels.Response()
-//        presenter?.presentSomething(response: response)
-//    }
+    func fetchGenres(with request: ListGenresModels.Request) {
+        worker.parseGenres { (genres) in
+            do {
+                let value = try genres.get()
+                let response = ListGenresModels.Response(genres: value)
+                self.presenter?.presentFetchedGenres(for: response)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
 }
